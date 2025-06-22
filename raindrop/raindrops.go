@@ -53,13 +53,13 @@ func (s *RaindropsService) List(ctx context.Context, collectionId int, opts *Lis
 	return out.Items, nil
 }
 
-func (s *RaindropsService) CreateMany(ctx context.Context, raindrops []*models.RaindropResponse) ([]*models.RaindropResponse, error) {
+func (s *RaindropsService) CreateMany(ctx context.Context, raindrops []*models.RaindropCreate) ([]*models.RaindropResponse, error) {
 	if len(raindrops) > 100 {
 		return nil, fmt.Errorf("maximum 100 raindrops can be created at once")
 	}
 
 	reqBody := struct {
-		Items []*models.RaindropResponse `json:"items"`
+		Items []*models.RaindropCreate `json:"items"`
 	}{
 		Items: raindrops,
 	}

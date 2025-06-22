@@ -2,63 +2,82 @@ package models
 
 import "time"
 
-// RaindropRequest represents the request body for creating a raindrop
-type RaindropRequest struct {
-	PleaseParse bool        `json:"pleaseParse,omitempty"`
-	Created     string      `json:"created,omitempty"`
-	LastUpdate  string      `json:"lastUpdate,omitempty"`
-	Order       int         `json:"order,omitempty"`
-	Important   bool        `json:"important,omitempty"`
-	Tags        []string    `json:"tags,omitempty"`
-	Media       []string    `json:"media,omitempty"`
-	Cover       string      `json:"cover,omitempty"`
-	Collection  *Collection `json:"collection,omitempty"`
-	Type        string      `json:"type,omitempty"`
-	Excerpt     string      `json:"excerpt,omitempty"`
-	Title       string      `json:"title,omitempty"`
-	Link        string      `json:"link"`
-	Highlights  []string    `json:"highlights,omitempty"`
+// RaindropCreate represents the request body for creating a raindrop
+type RaindropCreate struct {
+	PleaseParse bool   `json:"pleaseParse,omitempty"`
+	Created     string `json:"created,omitempty"`
+	//LastUpdate  string            `json:"lastUpdate,omitempty"` // DO NOT WORK ON API
+	//Order       int               `json:"order,omitempty"`      // DO NOT WORK ON API
+	Important    bool        `json:"important,omitempty"`
+	Tags         []string    `json:"tags,omitempty"`
+	Media        []Media     `json:"media,omitempty"`
+	Cover        string      `json:"cover,omitempty"`
+	Collection   *Collection `json:"collection,omitempty"`
+	CollectionId int         `json:"collectionId,omitempty"`
+	//Type         string            `json:"type,omitempty"`
+	Excerpt    string            `json:"excerpt,omitempty"`
+	Title      string            `json:"title,omitempty"`
+	Link       string            `json:"link"`
+	Highlights []HighlightCreate `json:"highlights,omitempty"`
 	//Reminder    *Reminder   `json:"reminder,omitempty"`
 }
 
-// RaindropResponse représente un favori dans RaindropResponse.io.
+type RaindropUpdate struct {
+	Created string `json:"created,omitempty"`
+	//LastUpdate   string   `json:"lastUpdate,omitempty"` // DO NOT WORK ON API
+	//Order        int      `json:"order,omitempty"`      // DO NOT WORK ON API
+	Important    bool     `json:"important,omitempty"`
+	Tags         []string `json:"tags,omitempty"`
+	Media        []Media  `json:"media,omitempty"`
+	Cover        string   `json:"cover,omitempty"`
+	CollectionId int      `json:"collectionId,omitempty"`
+	//Type         string   `json:"type,omitempty"`       // USELESS
+	Title      string            `json:"title,omitempty"`
+	Excerpt    string            `json:"excerpt,omitempty"`
+	Note       string            `json:"note,omitempty"`
+	Link       string            `json:"link,omitempty"`
+	Highlights []HighlightUpdate `json:"highlights,omitempty"`
+	//Reminder	*Reminder   `json:"reminder,omitempty"`   // PRO only
+}
+
+// RaindropResponse represent api response of raindrop.io
 type RaindropResponse struct {
-	Id      int    `json:"_id"`
-	Link    string `json:"link"`
-	Title   string `json:"title"`
-	Excerpt string `json:"excerpt"`
-	Note    string `json:"note"`
-	Type    string `json:"type"`
+	Id      int    `json:"_id,omitempty"`
+	Link    string `json:"link,omitempty"`
+	Title   string `json:"title,omitempty"`
+	Excerpt string `json:"excerpt,omitempty"`
+	Note    string `json:"note,omitempty"`
+	Type    string `json:"type,omitempty"`
 	User    struct {
-		Ref string `json:"$ref"`
-		Id  int    `json:"$id"`
-	} `json:"user"`
-	Cover string `json:"cover"`
+		Ref string `json:"$ref,omitempty"`
+		Id  int    `json:"$id,omitempty"`
+	} `json:"user,omitempty"`
+	Cover string `json:"cover,omitempty"`
 	Media []struct {
-		Link string `json:"link"`
-		Type string `json:"type"`
-	} `json:"media"`
-	Tags      []interface{} `json:"tags"`
-	Important bool          `json:"important"`
+		Link string `json:"link,omitempty"`
+		Type string `json:"type,omitempty"`
+	} `json:"media,omitempty"`
+	Tags      []interface{} `json:"tags,omitempty"`
+	Important bool          `json:"important,omitempty"`
 	Reminder  struct {
-		Date interface{} `json:"date"`
-	} `json:"reminder"`
-	Removed    bool      `json:"removed"`
-	Created    time.Time `json:"created"`
+		Date interface{} `json:"date,omitempty"`
+	} `json:"reminder,omitempty"`
+	Removed    bool      `json:"removed,omitempty"`
+	Created    time.Time `json:"created,omitempty"`
 	Collection struct {
-		Ref string `json:"$ref"`
-		Id  int    `json:"$id"`
-		Oid int    `json:"oid"`
-	} `json:"collection"`
-	Highlights []interface{} `json:"highlights"`
-	LastUpdate time.Time     `json:"lastUpdate"`
-	Domain     string        `json:"domain"`
+		Ref string `json:"$ref,omitempty"`
+		Id  int    `json:"$id,omitempty"`
+		Oid int    `json:"oid,omitempty"`
+	} `json:"collection,omitempty"`
+	Highlights *[]HighlightResponse `json:"highlights,omitempty"`
+	LastUpdate time.Time            `json:"lastUpdate,omitempty"`
+	Domain     string               `json:"domain,omitempty"`
 	CreatorRef struct {
-		Id     int    `json:"_id"`
-		Avatar string `json:"avatar"`
-		Name   string `json:"name"`
-		Email  string `json:"email"`
-	} `json:"creatorRef"`
-	Sort         int `json:"sort"`
-	CollectionId int `json:"collectionId"`
+		Id     int    `json:"_id,omitempty"`
+		Avatar string `json:"avatar,omitempty"`
+		Name   string `json:"name,omitempty"`
+		Email  string `json:"email,omitempty"`
+	} `json:"creatorRef,omitempty"`
+	Sort         int `json:"sort,omitempty"`
+	CollectionId int `json:"collectionId,omitempty"`
 }

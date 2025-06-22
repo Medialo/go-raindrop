@@ -8,6 +8,7 @@ type Client struct {
 	BaseURL    string
 	Token      string
 	HTTPClient *http.Client
+	Debug      bool
 
 	common    service
 	Raindrops *RaindropsService
@@ -22,6 +23,7 @@ func NewClient(token string) *Client {
 		BaseURL:    "https://api.raindrop.io/rest/v1",
 		HTTPClient: http.DefaultClient,
 		Token:      token,
+		Debug:      false,
 	}
 
 	c.common.client = c
