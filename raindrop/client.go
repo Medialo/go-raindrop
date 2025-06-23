@@ -13,6 +13,7 @@ type Client struct {
 	common    service
 	Raindrops *RaindropsService
 	Raindrop  *RaindropService
+	Backup    *BackupService
 	//Collections *services.CollectionService
 	//Tags        *services.TagService
 	//Users       *services.UserService
@@ -29,6 +30,7 @@ func NewClient(token string) *Client {
 	c.common.client = c
 	c.Raindrops = (*RaindropsService)(&c.common)
 	c.Raindrop = (*RaindropService)(&c.common)
+	c.Backup = (*BackupService)(&c.common)
 	//c.Collections = &services.CollectionService{Client: c}
 	//c.Tags = &services.TagService{Client: c}
 	//c.Users = &services.UserService{Client: c}
