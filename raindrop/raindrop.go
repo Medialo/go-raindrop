@@ -3,7 +3,7 @@ package raindrop
 import (
 	"context"
 	"fmt"
-	"github.com/Medialo/raindrop-go/models"
+	"github.com/medialo/go-raindrop/models"
 )
 
 type RaindropService service

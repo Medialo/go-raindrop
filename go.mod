@@ -1,4 +1,4 @@
-module github.com/Medialo/go-raindrop
+module github.com/medialo/go-raindrop
 
 go 1.24
 
