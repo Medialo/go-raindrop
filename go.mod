@@ -1,8 +1,5 @@
-module github.com/Medialo/raindrop-go
+module github.com/Medialo/go-raindrop
 
 go 1.24
 
-require (
-	github.com/andybalholm/brotli v1.1.1
-	golang.org/x/text v0.26.0
-)
+require github.com/andybalholm/brotli v1.2.0
