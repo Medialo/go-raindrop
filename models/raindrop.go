@@ -17,6 +17,7 @@ type RaindropCreate struct {
 	//Type         string            `json:"type,omitempty"`
 	Excerpt    string            `json:"excerpt,omitempty"`
 	Title      string            `json:"title,omitempty"`
+	Note       string            `json:"note,omitempty"`
 	Link       string            `json:"link"`
 	Highlights []HighlightCreate `json:"highlights,omitempty"`
 	//Reminder    *Reminder   `json:"reminder,omitempty"`
